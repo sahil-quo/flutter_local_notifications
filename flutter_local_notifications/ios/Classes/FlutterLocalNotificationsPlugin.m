@@ -524,7 +524,7 @@ static FlutterError *getFlutterError(NSError *error) {
       notification.repeatInterval = NSCalendarUnitWeekOfYear;
       break;
     }
-    notification.fireDate = [NSDate dateWithTimeIntervalSinceNow:timeInterval];
+   // notification.fireDate = [NSDate dateWithTimeIntervalSinceNow:timeInterval];
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
     result(nil);
   }
@@ -790,7 +790,7 @@ static FlutterError *getFlutterError(NSError *error) {
     (id)arguments API_AVAILABLE(ios(10.0)) {
   switch ([arguments[REPEAT_INTERVAL] integerValue]) {
   case EveryMinute:
-    return [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:60
+    return [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:60 * 5
                                                               repeats:YES];
   case Hourly:
     return [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:60 * 60
